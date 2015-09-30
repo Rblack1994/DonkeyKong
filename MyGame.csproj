@@ -62,6 +62,10 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="src\GameMain.cs" />
+    <Compile Include="Input_Handler.cs" />
+    <Compile Include="GraphicsHandler.cs" />
+    <Compile Include="GraphicsObject.cs" />
+    <Compile Include="GameState.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="SwinGame">
