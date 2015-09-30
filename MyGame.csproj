@@ -66,6 +66,9 @@
     <Compile Include="GraphicsHandler.cs" />
     <Compile Include="GraphicsObject.cs" />
     <Compile Include="GameState.cs" />
+    <Compile Include="MenuStates.cs" />
+    <Compile Include="LevelStates.cs" />
+    <Compile Include="TransitionState.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="SwinGame">
