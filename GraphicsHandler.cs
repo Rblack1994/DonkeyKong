@@ -7,6 +7,12 @@ namespace MyGame
 		public GraphicsHandler ()
 		{
 		}
+
+		public void Run()
+		{
+
+		}
+
 	}
 }
 

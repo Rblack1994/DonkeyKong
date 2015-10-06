@@ -69,6 +69,7 @@
     <Compile Include="MenuStates.cs" />
     <Compile Include="LevelStates.cs" />
     <Compile Include="TransitionState.cs" />
+    <Compile Include="StateHandler.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="SwinGame">
