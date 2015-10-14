@@ -1,4 +1,5 @@
 language: csharp
 solution: MyGame.sln
+script:	make build
 notifications:
   slack: dp1-2015s2:b1lqOF67qvXUgK1Pyn5w4mfM
