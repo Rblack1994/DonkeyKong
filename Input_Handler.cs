@@ -2,7 +2,7 @@
 
 namespace MyGame
 {
-	public static class Input_Handler
+	public class Input_Handler
 	{
 
 		public Input_Handler ()

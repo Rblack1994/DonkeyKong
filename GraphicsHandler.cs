@@ -2,7 +2,7 @@
 
 namespace MyGame
 {
-	public static class GraphicsHandler
+	public class GraphicsHandler
 	{
 		public GraphicsHandler ()
 		{

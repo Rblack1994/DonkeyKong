@@ -13,14 +13,16 @@ namespace MyGame
             //Open the game window
             SwinGame.OpenGraphicsWindow("GameMain", 800, 600);
             SwinGame.ShowSwinGameSplashScreen();
-            
+			StateHandler _statehandler = new StateHandler ();
+			Input_Handler _inputhandler = new Input_Handler();
+			GraphicsHandler _graphicshandler = new GraphicsHandler ();
             //Run the game loop
             while(false == SwinGame.WindowCloseRequested())
             {
                 //Fetch the next batch of UI interaction
                 SwinGame.ProcessEvents();
-				Input_Handler.Run ();
-				GraphicsHandler.Run ();
+				_inputhandler.Run ();
+				_graphicshandler.Run ();
                 //Clear the screen and draw the framerate
                 SwinGame.ClearScreen(Color.Black);
                 SwinGame.DrawFramerate(0,0);

@@ -2,7 +2,7 @@
 
 namespace MyGame
 {
-	public static class StateHandler
+	public  class StateHandler
 	{
 		private GameState _gamestate;
 		private MenuStates _menustate;
