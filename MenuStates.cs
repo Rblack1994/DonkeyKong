@@ -2,7 +2,7 @@
 
 namespace MyGame
 {
-	public enum MenuStates
+	public enum MenuState
 	{
 		VeiwingScores,
 		CustomisingKeys,

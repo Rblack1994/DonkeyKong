@@ -1,4 +1,31 @@
+<<<<<<< HEAD
+C:\Users\546928\Desktop\DonkeyKong\obj\x86\Debug-Windows\MyGame.csprojResolveAssemblyReference.cache
+C:\Users\546928\Desktop\DonkeyKong\bin\Debug\Resources\animations\startup.txt
+C:\Users\546928\Desktop\DonkeyKong\bin\Debug\Resources\bundles\FileDialog.txt
+C:\Users\546928\Desktop\DonkeyKong\bin\Debug\Resources\bundles\splash.txt
+C:\Users\546928\Desktop\DonkeyKong\bin\Debug\Resources\fonts\arial.ttf
+C:\Users\546928\Desktop\DonkeyKong\bin\Debug\Resources\fonts\cour.ttf
+C:\Users\546928\Desktop\DonkeyKong\bin\Debug\Resources\fonts\maven_pro_regular.ttf
+C:\Users\546928\Desktop\DonkeyKong\bin\Debug\Resources\images\fdFile.png
+C:\Users\546928\Desktop\DonkeyKong\bin\Debug\Resources\images\fdFolder.png
+C:\Users\546928\Desktop\DonkeyKong\bin\Debug\Resources\images\FileDialog_Active.png
+C:\Users\546928\Desktop\DonkeyKong\bin\Debug\Resources\images\FileDialog_Background.png
+C:\Users\546928\Desktop\DonkeyKong\bin\Debug\Resources\images\FileDialog_Inactive.png
+C:\Users\546928\Desktop\DonkeyKong\bin\Debug\Resources\images\FileDialog_Scroll.png
+C:\Users\546928\Desktop\DonkeyKong\bin\Debug\Resources\images\FileDialog_ScrollSmall.png
+C:\Users\546928\Desktop\DonkeyKong\bin\Debug\Resources\images\Swinburne.jpg
+C:\Users\546928\Desktop\DonkeyKong\bin\Debug\Resources\images\SwinGameAni.png
+C:\Users\546928\Desktop\DonkeyKong\bin\Debug\Resources\panels\FileDialog.txt
+C:\Users\546928\Desktop\DonkeyKong\bin\Debug\Resources\sounds\error.wav
+C:\Users\546928\Desktop\DonkeyKong\bin\Debug\Resources\sounds\SwinGameStart.wav
+C:\Users\546928\Desktop\DonkeyKong\bin\Debug\Resources\SwinGame.icns
+C:\Users\546928\Desktop\DonkeyKong\bin\Debug\Resources\SwinGame.ico
+C:\Users\546928\Desktop\DonkeyKong\bin\Debug\MyGame.exe
+C:\Users\546928\Desktop\DonkeyKong\bin\Debug\SwinGame.dll
+C:\Users\546928\Desktop\DonkeyKong\obj\x86\Debug-Windows\MyGame.exe
+=======
 C:\Users\546928\Desktop\School\2015_Sem2\SWE20001\DonkeyKong\obj\x86\Debug-Windows\MyGame.csprojResolveAssemblyReference.cache
+>>>>>>> origin/master
 C:\Users\546928\Desktop\School\2015_Sem2\SWE20001\DonkeyKong\bin\Debug\Resources\animations\startup.txt
 C:\Users\546928\Desktop\School\2015_Sem2\SWE20001\DonkeyKong\bin\Debug\Resources\bundles\FileDialog.txt
 C:\Users\546928\Desktop\School\2015_Sem2\SWE20001\DonkeyKong\bin\Debug\Resources\bundles\splash.txt
@@ -21,4 +48,8 @@ C:\Users\546928\Desktop\School\2015_Sem2\SWE20001\DonkeyKong\bin\Debug\Resources
 C:\Users\546928\Desktop\School\2015_Sem2\SWE20001\DonkeyKong\bin\Debug\Resources\SwinGame.ico
 C:\Users\546928\Desktop\School\2015_Sem2\SWE20001\DonkeyKong\bin\Debug\MyGame.exe
 C:\Users\546928\Desktop\School\2015_Sem2\SWE20001\DonkeyKong\bin\Debug\SwinGame.dll
+<<<<<<< HEAD
+C:\Users\546928\Desktop\School\2015_Sem2\SWE20001\DonkeyKong\obj\x86\Debug-Windows\MyGame.csprojResolveAssemblyReference.cache
+=======
+>>>>>>> origin/master
 C:\Users\546928\Desktop\School\2015_Sem2\SWE20001\DonkeyKong\obj\x86\Debug-Windows\MyGame.exe
