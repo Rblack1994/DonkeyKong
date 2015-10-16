@@ -4,11 +4,21 @@ namespace MyGame
 {
 	public abstract class GraphicsObject
 	{
-		public GraphicsObject ()
+		public float Xpos;
+		public float Ypos;
+		private StateHandler _statehandler;
+
+		public GraphicsObject  (StateHandler _state,int posX, int posY)
 		{
-			float Xpos;
-			float Ypos;
+			Xpos = posX;
+			Ypos = posY;
+			_statehandler = _state;
+			loadbitmap ();
 		}
+
+		public abstract void Draw ();
+
+		public abstract void loadbitmap ();
 	}
 }
 

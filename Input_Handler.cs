@@ -1,10 +1,78 @@
 ﻿using System;
-
+using Color = System.Drawing.Color;
+using SwinGameSDK;
 namespace MyGame
 {
-	public static class Input_Handler
+	public  class Input_Handler
 	{
-		public Input_Handler ()
+		private StateHandler _statehandler;
+		private ObjectsHandler _objecthandler;
+
+		public Input_Handler (StateHandler _state,ObjectsHandler _object)
+		{
+			_statehandler = _state;
+			_objecthandler = _object;
+		}
+
+		public  void Run()
+		{
+			{
+				// Background Drawing
+				switch (_statehandler.Gamestate)
+				{
+				case GameState.Menu:
+					//HandleMenuInput ();
+					break;
+				case GameState.Game:
+					//HandleGameInput ();
+					break;
+				case GameState.Transition:
+					//HandleTansitionInput ();
+					break;
+				}
+			}
+		}
+
+		public  void  HandleMenuInput()
+		{
+			switch (_statehandler.Menustate)
+			{
+			case MenuState.MainMenu:
+				//HandleMainMenu ();
+				break;
+			case MenuState.VeiwingScores:
+				//handlescores
+				break;
+			case MenuState.CustomisingKeys:
+				//handlekeys
+				break;
+			case MenuState.CustomisingSkins:
+				//handleskins
+				break;
+			}
+		}
+
+		public  void  HandleGameInput()
+		{
+			switch (_statehandler.Levelstate)
+			{
+			case LevelState.Level1:
+				//HandleLevelInput ();
+				break;
+			case LevelState.Level2:
+				break;
+			case LevelState.Level3:
+				break;
+			case LevelState.Level4:
+				break;
+			}
+		}
+
+		public void HandleLevelInput()
+		{
+		}
+
+		public void HandleMainMenu()
 		{
 		}
 	}

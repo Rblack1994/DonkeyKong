@@ -1,8 +1,11 @@
 ﻿<Properties StartupItem="MyGame.csproj">
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug-Windows|x86" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="src\GameMain.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="ObjectsHandler.cs">
     <Files>
-      <File FileName="src\GameMain.cs" Line="9" Column="9" />
+      <File FileName="src\GameMain.cs" Line="23" Column="23" />
+      <File FileName="GraphicsHandler.cs" Line="7" Column="7" />
+      <File FileName="Input_Handler.cs" Line="7" Column="7" />
+      <File FileName="ObjectsHandler.cs" Line="5" Column="5" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>

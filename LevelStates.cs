@@ -2,7 +2,7 @@
 
 namespace MyGame
 {
-	public enum LevelStates
+	public enum LevelState
 	{
 		Level1,
 		Level2,
