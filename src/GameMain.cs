@@ -17,11 +17,13 @@ namespace MyGame
 			ObjectsHandler _objecthandler = new ObjectsHandler (_statehandler);
 			Input_Handler _inputhandler = new Input_Handler(_statehandler,_objecthandler);
 			GraphicsHandler _graphicshandler = new GraphicsHandler (_statehandler,_objecthandler);
+
             //Run the game loop
             while(false == SwinGame.WindowCloseRequested())
             {
                 //Fetch the next batch of UI interaction
                 SwinGame.ProcessEvents();
+
 
                 //Clear the screen and draw the framerate
 				SwinGame.ClearScreen(Color.Black);
@@ -29,6 +31,7 @@ namespace MyGame
 				_objecthandler.Run ();
 				_inputhandler.Run ();
 				_statehandler.Run ();
+
                 SwinGame.DrawFramerate(0,0);
                 //Draw onto the screen
                 SwinGame.RefreshScreen();

@@ -3,7 +3,9 @@ using Color = System.Drawing.Color;
 using SwinGameSDK;
 namespace MyGame
 {
-	public  class GraphicsHandler
+
+	public class GraphicsHandler
+
 	{
 		private StateHandler _statehandler;
 		private ObjectsHandler _objecthandler;
@@ -74,7 +76,6 @@ namespace MyGame
 		public  void DrawLevel1()
 		{
 		}
-			
 	}
 }
 

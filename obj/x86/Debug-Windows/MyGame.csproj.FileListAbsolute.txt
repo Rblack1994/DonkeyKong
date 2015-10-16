@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 C:\Users\546928\Desktop\DonkeyKong\obj\x86\Debug-Windows\MyGame.csprojResolveAssemblyReference.cache
 C:\Users\546928\Desktop\DonkeyKong\bin\Debug\Resources\animations\startup.txt
 C:\Users\546928\Desktop\DonkeyKong\bin\Debug\Resources\bundles\FileDialog.txt
@@ -22,6 +23,9 @@ C:\Users\546928\Desktop\DonkeyKong\bin\Debug\Resources\SwinGame.ico
 C:\Users\546928\Desktop\DonkeyKong\bin\Debug\MyGame.exe
 C:\Users\546928\Desktop\DonkeyKong\bin\Debug\SwinGame.dll
 C:\Users\546928\Desktop\DonkeyKong\obj\x86\Debug-Windows\MyGame.exe
+=======
+C:\Users\546928\Desktop\School\2015_Sem2\SWE20001\DonkeyKong\obj\x86\Debug-Windows\MyGame.csprojResolveAssemblyReference.cache
+>>>>>>> origin/master
 C:\Users\546928\Desktop\School\2015_Sem2\SWE20001\DonkeyKong\bin\Debug\Resources\animations\startup.txt
 C:\Users\546928\Desktop\School\2015_Sem2\SWE20001\DonkeyKong\bin\Debug\Resources\bundles\FileDialog.txt
 C:\Users\546928\Desktop\School\2015_Sem2\SWE20001\DonkeyKong\bin\Debug\Resources\bundles\splash.txt
@@ -44,5 +48,8 @@ C:\Users\546928\Desktop\School\2015_Sem2\SWE20001\DonkeyKong\bin\Debug\Resources
 C:\Users\546928\Desktop\School\2015_Sem2\SWE20001\DonkeyKong\bin\Debug\Resources\SwinGame.ico
 C:\Users\546928\Desktop\School\2015_Sem2\SWE20001\DonkeyKong\bin\Debug\MyGame.exe
 C:\Users\546928\Desktop\School\2015_Sem2\SWE20001\DonkeyKong\bin\Debug\SwinGame.dll
+<<<<<<< HEAD
 C:\Users\546928\Desktop\School\2015_Sem2\SWE20001\DonkeyKong\obj\x86\Debug-Windows\MyGame.csprojResolveAssemblyReference.cache
+=======
+>>>>>>> origin/master
 C:\Users\546928\Desktop\School\2015_Sem2\SWE20001\DonkeyKong\obj\x86\Debug-Windows\MyGame.exe

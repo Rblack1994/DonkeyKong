@@ -74,7 +74,9 @@ namespace MyGame
 
 		public void HandleMainMenu()
 		{
+
 		}
+
 	}
 }
 
