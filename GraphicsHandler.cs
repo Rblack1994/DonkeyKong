@@ -3,7 +3,9 @@ using Color = System.Drawing.Color;
 using SwinGameSDK;
 namespace MyGame
 {
+
 	public  class GraphicsHandler
+
 	{
 		private StateHandler _statehandler;
 		private ObjectsHandler _objecthandler;
@@ -25,6 +27,7 @@ namespace MyGame
 				break;
 			case GameState.Game:
 				DrawGame ();
+
 				break;
 			case GameState.Transition:
 				//DrawTransition ();
@@ -57,6 +60,7 @@ namespace MyGame
 			{
 			case LevelState.Level1:
 				DrawLevel1 ();
+
 				break;
 			case LevelState.Level2:
 				break;
@@ -74,6 +78,7 @@ namespace MyGame
 			SwinGameSDK.SwinGame.DrawText("High Scores", Color.DarkRed, "arial", 38, 200, 450);
 			SwinGameSDK.SwinGame.DrawText("Customize Keys", Color.DarkRed, "arial", 38, 200, 500);
 			SwinGameSDK.SwinGame.DrawText("Change Skins", Color.DarkRed, "arial", 38, 200, 550);
+
 		}
 
 		public  void DrawLevel1()

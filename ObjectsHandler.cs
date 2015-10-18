@@ -114,6 +114,7 @@ namespace MyGame
 				SwinGame.PointAt(650,291 - FLOOR_OFFSET*5),
 					//SwinGame.PointAt(700,566),
 											};
+
 				}
 
 		public  void Run()

@@ -73,6 +73,7 @@
     <Compile Include="Character.cs" />
     <Compile Include="CharacterState.cs" />
     <Compile Include="Mario.cs" />
+
     <Compile Include="Skins.cs" />
     <Compile Include="ObjectsHandler.cs" />
     <Compile Include="Hotkeys.cs" />
