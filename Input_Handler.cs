@@ -70,13 +70,19 @@ namespace MyGame
 
 		public void HandleLevelInput()
 		{
-			if(SwinGame.KeyDown(Hotkeys._left))
+			if (SwinGame.KeyDown (Hotkeys._left))
 			{
-				_objecthandler.LevelCharacter.Xpos--;
+				if (_objecthandler.LevelCharacter.Xpos > 50)
+				{
+					_objecthandler.LevelCharacter.Xpos--;
+				}
 			}
 			if(SwinGame.KeyDown(Hotkeys._right))
 			{
-				_objecthandler.LevelCharacter.Xpos++;
+				if (_objecthandler.LevelCharacter.Xpos < 725)
+				{
+					_objecthandler.LevelCharacter.Xpos++;
+				}
 			}
 			if(SwinGame.KeyTyped(Hotkeys._jump)&& ((_statehandler.Characterstate == CharacterState.Moving)||(_statehandler.Characterstate == CharacterState.Standing)))
 			{

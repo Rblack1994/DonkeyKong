@@ -1,5 +1,6 @@
 ﻿using System;
 using SwinGameSDK;
+using System.Collections.Generic;
 using Color = System.Drawing.Color;
 namespace MyGame
 {
@@ -12,10 +13,14 @@ namespace MyGame
 		private Bitmap _level1set;
 		private Bitmap _platform;
 		private Point2D[] _level1platforms;
+		private List<Barrel> _barrels;
 		private bool _collision = false;
+		private int _enemycount;
 
 				public ObjectsHandler (StateHandler _state)
 				{
+			_barrels = new List<Barrel> ();
+			_enemycount = 0;
 					_menucharacter = new Mario (_statehandler, 250, 250) as Character;
 					_levelcharacter = new Mario (_statehandler, 110, 552) as Character;
 					_statehandler = _state;
@@ -214,10 +219,17 @@ namespace MyGame
 		{
 			LevelCharacterObject ();
 			Level1Background ();
+			Level1Enemies ();
 		}
 
 		public void LevelCharacterObject()
 		{
+			foreach (Barrel value in _barrels)
+				if (SwinGame.PointInCircle (_levelcharacter.Xpos + 11, _levelcharacter.Ypos + 14, value.Xpos + 5, value.Ypos + 5, 14))
+				{
+					_statehandler.ChangeState (GameState.Menu);
+				}
+
 			_collision = false;	
 			if ((_statehandler.Characterstate != CharacterState.Jumping) || (LevelCharacter.Statecount < 65))
 			{
@@ -237,8 +249,6 @@ namespace MyGame
 					_levelcharacter.Ypos++;
 				}
 			}
-
-
 			_collision = false;	
 			if (_statehandler.Characterstate == CharacterState.Jumping)
 			{
@@ -283,6 +293,27 @@ namespace MyGame
 			foreach (Point2D value in _level1platforms)
 				SwinGame.DrawBitmap (_platform, value);
 		}
+
+		public void Level1Enemies ()
+		{
+			_enemycount++;
+			if(_enemycount >500)
+			{
+				_barrels.Add( new Barrel (_statehandler, 100, 269 - FLOOR_OFFSET * 5));
+				_enemycount = 0;
+			}
+			foreach (Barrel value in _barrels)
+			{
+				value.Move();
+				value.Draw ();
+			}
+			foreach (Barrel value in _barrels)
+			{
+				if (value.Ypos > 800)
+					_barrels.Remove (value);
+			}
+		}
+
 
 		public Character MenuCharacter 
 		{

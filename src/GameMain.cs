@@ -23,8 +23,6 @@ namespace MyGame
             {
                 //Fetch the next batch of UI interaction
                 SwinGame.ProcessEvents();
-
-
                 //Clear the screen and draw the framerate
 				SwinGame.ClearScreen(Color.Black);
 				_graphicshandler.Run ();
@@ -35,7 +33,7 @@ namespace MyGame
                 SwinGame.DrawFramerate(0,0);
                 //Draw onto the screen
                 SwinGame.RefreshScreen();
-				System.Threading.Thread.Sleep (5);
+				System.Threading.Thread.Sleep (2);
             }
             //End the audio
             SwinGame.CloseAudio();

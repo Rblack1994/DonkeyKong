@@ -60,7 +60,6 @@ namespace MyGame
 			{
 			case LevelState.Level1:
 				DrawLevel1 ();
-
 				break;
 			case LevelState.Level2:
 				break;
