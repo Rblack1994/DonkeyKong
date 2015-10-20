@@ -8,7 +8,10 @@ namespace MyGame
 		private StateHandler _statehandler;
 		private int _barrelstate;
 		private int _statecount;
-		protected Bitmap _charactersprite;
+		protected Bitmap _charactersprite0;
+		protected Bitmap _charactersprite1;
+		protected Bitmap _charactersprite2;
+		protected Bitmap _charactersprite3;
 		private bool _goingright;
 
 
@@ -27,10 +30,24 @@ namespace MyGame
 			if (_goingright)
 			{
 				Xpos++;
+				if (_statecount % 25 == 0)
+				{
+					_barrelstate++;
+				}
+				_barrelstate = _barrelstate % 4;
 			}
 			else
 			{
 				Xpos--;
+				if (_statecount % 25 == 0)
+				{
+					_barrelstate--;
+				}
+				if (_barrelstate < 0)
+				{
+					_barrelstate = 3;
+				}
+				_barrelstate = _barrelstate % 4;
 			}
 			if (Xpos >= 700 || Xpos <= 75)
 			{
@@ -44,14 +61,33 @@ namespace MyGame
 
 		public override void loadbitmap()
 		{
-			_charactersprite = SwinGame.LoadBitmap (SwinGame.PathToResource ("barrel1.png", ResourceKind.BitmapResource),true,Color.Black);
+			_charactersprite0 = SwinGame.LoadBitmap (SwinGame.PathToResource ("barrel0.png", ResourceKind.BitmapResource),true,Color.Black);
+			_charactersprite1 = SwinGame.LoadBitmap (SwinGame.PathToResource ("barrel1.png", ResourceKind.BitmapResource),true,Color.Black);
+			_charactersprite2 = SwinGame.LoadBitmap (SwinGame.PathToResource ("barrel2.png", ResourceKind.BitmapResource),true,Color.Black);
+			_charactersprite3 = SwinGame.LoadBitmap (SwinGame.PathToResource ("barrel3.png", ResourceKind.BitmapResource),true,Color.Black);
 		}
 
 		public Bitmap CharacterSprite
 		{
 			get
 			{
-				return _charactersprite;
+				switch (_barrelstate)
+				{
+				case 0:
+					return _charactersprite0;
+					break;
+				case 1:
+					return _charactersprite1;
+					break;
+				case 2:
+					return _charactersprite2;
+					break;
+				case 3:
+					return _charactersprite3;
+					break;
+				default :
+					return _charactersprite0;
+				}
 			}
 		}
 
@@ -69,33 +105,7 @@ namespace MyGame
 
 		public override void Draw()
 		{
-			SwinGameSDK.SwinGame.DrawBitmap(_charactersprite,Xpos,Ypos);
+			SwinGameSDK.SwinGame.DrawBitmap(CharacterSprite,Xpos,Ypos);
 		}
-		/*public override void Draw()
-		{
-			switch (_statehandler.Characterstate)
-			{
-			case CharacterState.Standing:
-				//SwinGameSDK.SwinGame.DrawBitmapPart (_charactersprite, 59, 24, 25, 431 - 176, Xpos, Ypos);
-				break;
-			case CharacterState.Climbing:
-				//SwinGameSDK.SwinGame.DrawBitmapPart (_charactersprite, 134, 24, 25, 431 - 176, Xpos , Ypos);
-				break;
-			case CharacterState.Dying:
-
-				break;
-			case CharacterState.Hammer:
-
-				break;
-			case CharacterState.Moving:
-				//SwinGameSDK.SwinGame.DrawBitmapPart (_charactersprite, 84 + (25 * _statecount), 24, 25, 431 - 176, Xpos, Ypos);
-				_statecount++;
-				_statecount = _statecount % 2;
-				break;
-			case CharacterState.Jumping:
-
-				break;
-			}
-		}*/
 	}
 }

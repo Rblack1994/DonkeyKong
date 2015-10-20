@@ -40,7 +40,7 @@ namespace MyGame
 
 		public override void Draw()
 		{
-			SwinGameSDK.SwinGame.DrawBitmap(_charactersprite,Xpos,Ypos);
+			SwinGameSDK.SwinGame.DrawBitmap(CharacterSprite,Xpos,Ypos);
 		}
 		/*public override void Draw()
 		{
