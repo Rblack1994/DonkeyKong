@@ -4,7 +4,6 @@ namespace MyGame
 {
 	public  class StateHandler
 	{
-
 		private   GameState _gamestate;
 		private  MenuState _menustate;
 		private  LevelState _levelstate;
@@ -17,6 +16,7 @@ namespace MyGame
 		private  TransitionState _nexttransitionstate;
 		private CharacterState _nextcharacterstate;
 		private Skins _nextcharacterskin;
+		public MenuCursor _cursor;
 
 		 public StateHandler ()
 		{
@@ -32,6 +32,7 @@ namespace MyGame
 			_nexttransitionstate = TransitionState.LevelStart;
 			_nextcharacterstate = CharacterState.Standing;
 			_nextcharacterskin = Skins.Mario;
+			_cursor = MenuCursor.PlayGame;
 		}
 
 		public void Run()

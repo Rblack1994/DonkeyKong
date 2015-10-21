@@ -6,12 +6,17 @@ namespace MyGame
 	{
 		public static KeyCode _left;
 		public static KeyCode _right;
+		public static KeyCode _up;
+		public static KeyCode _down;
 		public static KeyCode _jump;
 		 static Hotkeys ()
 		{
 			_left = KeyCode.vk_LEFT;
 			_right = KeyCode.vk_RIGHT;
-			_jump = KeyCode.vk_UP;
+			_up = KeyCode.vk_UP;
+			_down = KeyCode.vk_DOWN;
+			_jump = KeyCode.vk_SPACE;
+
 		}
 	}
 }

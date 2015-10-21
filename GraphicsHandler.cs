@@ -4,7 +4,7 @@ using SwinGameSDK;
 namespace MyGame
 {
 
-	public class GraphicsHandler
+	public  class GraphicsHandler
 
 	{
 		private StateHandler _statehandler;
@@ -23,10 +23,11 @@ namespace MyGame
 			switch (_statehandler.Gamestate)
 			{
 			case GameState.Menu:
-				//DrawMenu ();
+				DrawMenu ();
 				break;
 			case GameState.Game:
-				//DrawGame ();
+				DrawGame ();
+
 				break;
 			case GameState.Transition:
 				//DrawTransition ();
@@ -39,9 +40,9 @@ namespace MyGame
 			switch (_statehandler.Menustate)
 			{
 			case MenuState.MainMenu:
-				//DrawMainMenu ();
+				DrawMainMenu ();
 				break;
-			case MenuState.VeiwingScores:
+			case MenuState.ViewingScores:
 				//drawscores
 				break;
 			case MenuState.CustomisingKeys:
@@ -58,7 +59,7 @@ namespace MyGame
 			switch (_statehandler.Levelstate)
 			{
 			case LevelState.Level1:
-				//DrawLevel1 ();
+				DrawLevel1 ();
 				break;
 			case LevelState.Level2:
 				break;
@@ -71,11 +72,37 @@ namespace MyGame
 
 		public  void DrawMainMenu()
 		{
+			SwinGameSDK.SwinGame.DrawText("C# Donkey Kong", Color.DarkRed, "arial", 38, 200, 25);
+			SwinGameSDK.SwinGame.DrawText("Start", Color.DarkRed, "arial", 38, 200, 400);
+			SwinGameSDK.SwinGame.DrawText("High Scores", Color.DarkRed, "arial", 38, 200, 450);
+			SwinGameSDK.SwinGame.DrawText("Customize Keys", Color.DarkRed, "arial", 38, 200, 500);
+			SwinGameSDK.SwinGame.DrawText("Change Skins", Color.DarkRed, "arial", 38, 200, 550);
+
+			switch (_statehandler._cursor)
+			{
+			case MenuCursor.PlayGame:
+				SwinGameSDK.SwinGame.DrawText ("Start", Color.White, "arial", 38, 200, 400);
+				break;
+			case MenuCursor.HighScores:
+				SwinGameSDK.SwinGame.DrawText ("High Scores", Color.White, "arial", 38, 200, 450);
+				break;
+			case MenuCursor.ChangeKeys:
+				SwinGameSDK.SwinGame.DrawText ("Customize Keys", Color.White, "arial", 38, 200, 500);
+				break;
+			case MenuCursor.ChangeSkins:
+				SwinGameSDK.SwinGame.DrawText ("Change Skins", Color.White, "arial", 38, 200, 550);
+				break;
+			}
+
+
 		}
 
 		public  void DrawLevel1()
 		{
+			SwinGameSDK.SwinGame.DrawText("Donkey Kong Level 1", Color.DarkRed, "arial", 38, 200, 25);
+			SwinGameSDK.SwinGame.DrawText(_statehandler.Characterstate.ToString(), Color.DarkRed, "arial", 400, 200, 10);
 		}
+			
 	}
 }
 

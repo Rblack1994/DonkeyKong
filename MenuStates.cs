@@ -4,10 +4,10 @@ namespace MyGame
 {
 	public enum MenuState
 	{
-		VeiwingScores,
-		CustomisingKeys,
-		CustomisingSkins,
-		MainMenu
+		MainMenu = 1,
+		CustomisingKeys = 2,
+		CustomisingSkins = 3,
+		ViewingScores = 4
 	}
 }
 

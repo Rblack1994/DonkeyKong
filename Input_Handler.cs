@@ -21,10 +21,10 @@ namespace MyGame
 				switch (_statehandler.Gamestate)
 				{
 				case GameState.Menu:
-					//HandleMenuInput ();
+					HandleMenuInput ();
 					break;
 				case GameState.Game:
-					//HandleGameInput ();
+					HandleGameInput ();
 					break;
 				case GameState.Transition:
 					//HandleTansitionInput ();
@@ -38,16 +38,16 @@ namespace MyGame
 			switch (_statehandler.Menustate)
 			{
 			case MenuState.MainMenu:
-				//HandleMainMenu ();
+				HandleMainMenu ();
 				break;
-			case MenuState.VeiwingScores:
-				//handlescores
+			case MenuState.ViewingScores:
+				//HandleScores ();
 				break;
 			case MenuState.CustomisingKeys:
-				//handlekeys
+				//CustomiseKeys ();
 				break;
 			case MenuState.CustomisingSkins:
-				//handleskins
+				//CustomiseSkins ();
 				break;
 			}
 		}
@@ -57,7 +57,7 @@ namespace MyGame
 			switch (_statehandler.Levelstate)
 			{
 			case LevelState.Level1:
-				//HandleLevelInput ();
+				HandleLevelInput ();
 				break;
 			case LevelState.Level2:
 				break;
@@ -70,13 +70,97 @@ namespace MyGame
 
 		public void HandleLevelInput()
 		{
+			if (SwinGame.KeyDown (Hotkeys._left))
+			{
+				if (_objecthandler.LevelCharacter.Xpos > 50)
+				{
+					_objecthandler.LevelCharacter.Goingright = false;
+					_objecthandler.LevelCharacter.Xpos--;
+					if (_statehandler.Characterstate == CharacterState.Standing)
+					{
+						_statehandler.ChangeState (CharacterState.Moving);
+					}
+				}
+			}
+				
+			if(SwinGame.KeyDown(Hotkeys._right))
+			{
+				if (_objecthandler.LevelCharacter.Xpos < 725)
+				{
+					_objecthandler.LevelCharacter.Goingright = true;
+					_objecthandler.LevelCharacter.Xpos++;
+					if (_statehandler.Characterstate == CharacterState.Standing)
+					{
+						_statehandler.ChangeState (CharacterState.Moving);
+					}
+				}
+			}
+			if(SwinGame.KeyTyped(Hotkeys._jump)&& ((_statehandler.Characterstate == CharacterState.Moving)||(_statehandler.Characterstate == CharacterState.Standing)))
+			{
+				_statehandler.ChangeState (CharacterState.Jumping);
+				_objecthandler.LevelCharacter.Statecount = 130;
+			}
 		}
 
 		public void HandleMainMenu()
 		{
+			if (SwinGame.KeyTyped (Hotkeys._down))
+			{
+				if ((int)_statehandler._cursor >= 4)
+				{
+					_statehandler._cursor = (MenuCursor)1;
+				}
+				else
+				{
+					_statehandler._cursor++;
+				}
+			}
+
+			else if (SwinGame.KeyTyped (Hotkeys._up))
+			{
+				if ((int)_statehandler._cursor <= 1)
+				{
+					_statehandler._cursor = (MenuCursor)4;
+				}
+				else
+				{
+					_statehandler._cursor--;
+				}
+			}
+
+			else if (SwinGame.KeyDown (Hotkeys._jump))
+			{
+				switch (_statehandler._cursor)
+				{
+				case MenuCursor.PlayGame:
+					_statehandler.ChangeState (GameState.Game);
+					break;
+				case MenuCursor.HighScores:
+					_statehandler.ChangeState (MenuState.ViewingScores);
+					break;
+				case MenuCursor.ChangeSkins:
+					_statehandler.ChangeState (MenuState.CustomisingSkins);
+					break;
+				case MenuCursor.ChangeKeys:
+					_statehandler.ChangeState (MenuState.CustomisingKeys);
+					break;
+				}
+			}
+			/*if(SwinGame.KeyDown(Hotkeys._left))
+				{
+				_objecthandler.MenuCharacter.Xpos--;
+				}
+			if(SwinGame.KeyDown(Hotkeys._right))
+			{
+				_objecthandler.MenuCharacter.Xpos++;
+			}
+			if(SwinGame.KeyTyped(KeyCode.vk_1))
+			{
+				_statehandler.ChangeState(GameState.Game);
+			}*/
 
 		}
-
+			
 	}
 }
 
