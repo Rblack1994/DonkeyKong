@@ -147,7 +147,7 @@ namespace MyGame
 			case MenuState.MainMenu:
 				MainMenuObjects ();
 				break;
-			case MenuState.VeiwingScores:
+			case MenuState.ViewingScores:
 				//drawscores
 				break;
 			case MenuState.CustomisingKeys:

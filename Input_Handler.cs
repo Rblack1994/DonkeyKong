@@ -40,14 +40,14 @@ namespace MyGame
 			case MenuState.MainMenu:
 				HandleMainMenu ();
 				break;
-			case MenuState.VeiwingScores:
-				//handlescores
+			case MenuState.ViewingScores:
+				//HandleScores ();
 				break;
 			case MenuState.CustomisingKeys:
-				//handlekeys
+				//CustomiseKeys ();
 				break;
 			case MenuState.CustomisingSkins:
-				//handleskins
+				//CustomiseSkins ();
 				break;
 			}
 		}
@@ -93,7 +93,49 @@ namespace MyGame
 
 		public void HandleMainMenu()
 		{
-			if(SwinGame.KeyDown(Hotkeys._left))
+			if (SwinGame.KeyTyped (Hotkeys._down))
+			{
+				if ((int)_statehandler._cursor >= 4)
+				{
+					_statehandler._cursor = (MenuCursor)1;
+				}
+				else
+				{
+					_statehandler._cursor++;
+				}
+			}
+
+			else if (SwinGame.KeyTyped (Hotkeys._up))
+			{
+				if ((int)_statehandler._cursor <= 1)
+				{
+					_statehandler._cursor = (MenuCursor)4;
+				}
+				else
+				{
+					_statehandler._cursor--;
+				}
+			}
+
+			else if (SwinGame.KeyDown (Hotkeys._jump))
+			{
+				switch (_statehandler._cursor)
+				{
+				case MenuCursor.PlayGame:
+					_statehandler.ChangeState (GameState.Game);
+					break;
+				case MenuCursor.HighScores:
+					_statehandler.ChangeState (MenuState.ViewingScores);
+					break;
+				case MenuCursor.ChangeSkins:
+					_statehandler.ChangeState (MenuState.CustomisingSkins);
+					break;
+				case MenuCursor.ChangeKeys:
+					_statehandler.ChangeState (MenuState.CustomisingKeys);
+					break;
+				}
+			}
+			/*if(SwinGame.KeyDown(Hotkeys._left))
 				{
 				_objecthandler.MenuCharacter.Xpos--;
 				}
@@ -104,7 +146,8 @@ namespace MyGame
 			if(SwinGame.KeyTyped(KeyCode.vk_1))
 			{
 				_statehandler.ChangeState(GameState.Game);
-			}
+			}*/
+
 		}
 			
 	}
