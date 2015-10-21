@@ -6,7 +6,8 @@ namespace MyGame
 	{
 		private StateHandler _statehandler;
 		private int _statecount;
-		protected Bitmap _charactersprite;
+		protected Bitmap[] _charactersprites;
+		protected Bitmap _sprite;
 		private bool _goingright;
 
 		public Character (StateHandler _state,int posX, int posY):base(_state,posX,posY)
@@ -22,7 +23,75 @@ namespace MyGame
 		{
 			get
 			{
-				return _charactersprite;
+				if (_statehandler != null)
+				{
+					switch (_statehandler.Characterstate)
+					{
+					case CharacterState.Standing:
+						return _charactersprites [0];
+						break;
+					case CharacterState.Climbing:
+						return _charactersprites [0];
+						break;
+
+					case CharacterState.Dying:
+						if (_statecount < 30)
+						{
+							return _charactersprites [7];
+						}
+						else if (_statecount < 60)
+						{
+							return _charactersprites [8];
+						}
+						else
+							return _charactersprites [9];
+						break;
+
+					case CharacterState.Hammer:
+						return _charactersprites [0];
+						break;
+					case CharacterState.Moving:
+						if (_goingright)
+						{
+							if ((_statecount % 20) > 10)
+							{
+								return _charactersprites [1];
+							}
+							else
+							{
+								return _charactersprites [3];
+							}
+						}
+						else
+						{
+							if ((_statecount % 20) > 10)
+							{
+								return _charactersprites [2];
+							}
+							else
+							{
+								return _charactersprites [4];
+							}
+						}
+						break;
+					case CharacterState.Jumping:
+						if (_goingright)
+						{
+							return _charactersprites [5];
+						}
+						else
+						{
+							return _charactersprites [6];
+						}
+						break;
+					default :
+						return _charactersprites [0];
+					}
+				}
+				else
+				{
+					return _charactersprites [0];
+				}
 			}
 		}
 
@@ -38,36 +107,30 @@ namespace MyGame
 			}
 		}
 
+		public StateHandler _cstate
+		{
+			get
+			{
+				return _statehandler;
+			}
+		}
+
 		public override void Draw()
 		{
-			SwinGameSDK.SwinGame.DrawBitmap(CharacterSprite,Xpos,Ypos);
+			SwinGameSDK.SwinGame.DrawBitmap(CharacterSprite, Xpos, Ypos);
 		}
-		/*public override void Draw()
+
+		public bool Goingright 
 		{
-			switch (_statehandler.Characterstate)
+			get
 			{
-			case CharacterState.Standing:
-				//SwinGameSDK.SwinGame.DrawBitmapPart (_charactersprite, 59, 24, 25, 431 - 176, Xpos, Ypos);
-				break;
-			case CharacterState.Climbing:
-				//SwinGameSDK.SwinGame.DrawBitmapPart (_charactersprite, 134, 24, 25, 431 - 176, Xpos , Ypos);
-				break;
-			case CharacterState.Dying:
-
-				break;
-			case CharacterState.Hammer:
-
-				break;
-			case CharacterState.Moving:
-				//SwinGameSDK.SwinGame.DrawBitmapPart (_charactersprite, 84 + (25 * _statecount), 24, 25, 431 - 176, Xpos, Ypos);
-				_statecount++;
-				_statecount = _statecount % 2;
-				break;
-			case CharacterState.Jumping:
-
-				break;
+				return _goingright;
 			}
-		}*/
+			set
+			{
+				_goingright = value;
+			}
+		}
 	}
 }
 

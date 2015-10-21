@@ -74,14 +74,25 @@ namespace MyGame
 			{
 				if (_objecthandler.LevelCharacter.Xpos > 50)
 				{
+					_objecthandler.LevelCharacter.Goingright = false;
 					_objecthandler.LevelCharacter.Xpos--;
+					if (_statehandler.Characterstate == CharacterState.Standing)
+					{
+						_statehandler.ChangeState (CharacterState.Moving);
+					}
 				}
 			}
+				
 			if(SwinGame.KeyDown(Hotkeys._right))
 			{
 				if (_objecthandler.LevelCharacter.Xpos < 725)
 				{
+					_objecthandler.LevelCharacter.Goingright = true;
 					_objecthandler.LevelCharacter.Xpos++;
+					if (_statehandler.Characterstate == CharacterState.Standing)
+					{
+						_statehandler.ChangeState (CharacterState.Moving);
+					}
 				}
 			}
 			if(SwinGame.KeyTyped(Hotkeys._jump)&& ((_statehandler.Characterstate == CharacterState.Moving)||(_statehandler.Characterstate == CharacterState.Standing)))

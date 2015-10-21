@@ -26,9 +26,9 @@ namespace MyGame
                 //Clear the screen and draw the framerate
 				SwinGame.ClearScreen(Color.Black);
 				_graphicshandler.Run ();
-				_objecthandler.Run ();
 				_inputhandler.Run ();
 				_statehandler.Run ();
+				_objecthandler.Run ();
 
                 SwinGame.DrawFramerate(0,0);
                 //Draw onto the screen

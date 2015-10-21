@@ -19,11 +19,12 @@ namespace MyGame
 
 				public ObjectsHandler (StateHandler _state)
 				{
+			_statehandler = _state;
 			_barrels = new List<Barrel> ();
 			_enemycount = 0;
-					_menucharacter = new Mario (_statehandler, 250, 250) as Character;
-					_levelcharacter = new Mario (_statehandler, 110, 552) as Character;
-					_statehandler = _state;
+			_menucharacter = new Mario (_statehandler, 250, 250) as Character;
+			_levelcharacter = new Mario (_statehandler, 110, 552);
+					
 			_level1set = SwinGame.LoadBitmap(SwinGame.PathToResource("set1.png", ResourceKind.BitmapResource),true,Color.Black);
 			_platform = SwinGame.LoadBitmap(SwinGame.PathToResource("platform.png", ResourceKind.BitmapResource),true,Color.Black);
 
@@ -177,7 +178,7 @@ namespace MyGame
 
 		public void MainMenuObjects()
 		{
-			MainMenuCharacter ();
+			//MainMenuCharacter ();
 			MainMenuGame ();
 		}
 
@@ -224,12 +225,25 @@ namespace MyGame
 
 		public void LevelCharacterObject()
 		{
+			//increases the character statecount for animation
+			//checks for barrel collisions
 			foreach (Barrel value in _barrels)
 				if (SwinGame.PointInCircle (_levelcharacter.Xpos + 11, _levelcharacter.Ypos + 14, value.Xpos + 5, value.Ypos + 5, 14))
 				{
-					_statehandler.ChangeState (GameState.Menu);
+					_statehandler.ChangeState (CharacterState.Dying);
+					LevelCharacter.Statecount = 0;
 				}
 
+			//handles a dieing character
+			if (_statehandler.Characterstate == CharacterState.Dying)
+			{
+				if (_levelcharacter.Statecount > 90)
+				{
+					_statehandler.ChangeState (GameState.Menu);
+				}
+			}
+
+			//checks collision with platforms
 			_collision = false;	
 			if ((_statehandler.Characterstate != CharacterState.Jumping) || (LevelCharacter.Statecount < 65))
 			{
@@ -249,9 +263,12 @@ namespace MyGame
 					_levelcharacter.Ypos++;
 				}
 			}
+
+			//handles character jumping, with platform collisions
+			//platform collsions should perhaps be turned into a function
 			_collision = false;	
 			if (_statehandler.Characterstate == CharacterState.Jumping)
-			{
+			{ _levelcharacter.Statecount--;
 				if (_levelcharacter.Statecount > 65)
 				{
 					foreach (Point2D value in _level1platforms)
@@ -277,13 +294,15 @@ namespace MyGame
 					}
 				}
 			}
-
+			//draws the character
 			_levelcharacter.Draw ();
+			_levelcharacter.Statecount++;
+			//initialises the character
 			switch (_statehandler.Skin)
 			{
 			case Skins.Mario:
-				if(!(_levelcharacter is Mario))
-					_levelcharacter = new Mario (_statehandler, 250, 250) as Character;
+				if (!(_levelcharacter is Mario))
+					_levelcharacter = new Mario (_statehandler, 250, 250);// as Character;
 				break;
 			}
 		}

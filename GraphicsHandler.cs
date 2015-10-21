@@ -100,6 +100,7 @@ namespace MyGame
 		public  void DrawLevel1()
 		{
 			SwinGameSDK.SwinGame.DrawText("Donkey Kong Level 1", Color.DarkRed, "arial", 38, 200, 25);
+			SwinGameSDK.SwinGame.DrawText(_statehandler.Characterstate.ToString(), Color.DarkRed, "arial", 400, 200, 10);
 		}
 			
 	}
