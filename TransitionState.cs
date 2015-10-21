@@ -7,7 +7,8 @@ namespace MyGame
 		Confirmation,
 		WinScreen,
 		LossScreen,
-		LevelStart
+		LevelStart,
+		PauseScreen
 	}
 }
 

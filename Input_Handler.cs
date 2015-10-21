@@ -27,9 +27,31 @@ namespace MyGame
 					HandleGameInput ();
 					break;
 				case GameState.Transition:
-					//HandleTansitionInput ();
+					HandleTransitionInput ();
 					break;
 				}
+			}
+		}
+
+		public  void HandleTransitionInput()
+		{
+			switch (_statehandler.Transitionstate)
+			{
+			case TransitionState.Confirmation:
+				//
+				break;
+			case TransitionState.LevelStart:
+				//drawscores
+				break;
+			case TransitionState.LossScreen:
+				//drawkeys
+				break;
+			case TransitionState.PauseScreen:
+				PauseMenu ();
+				break;
+			case TransitionState.WinScreen:
+				//
+				break;
 			}
 		}
 
@@ -99,6 +121,58 @@ namespace MyGame
 			{
 				_statehandler.ChangeState (CharacterState.Jumping);
 				_objecthandler.LevelCharacter.Statecount = 130;
+			}
+
+			if (SwinGame.KeyTyped (KeyCode.vk_p))
+			{
+				_statehandler.ChangeState (GameState.Transition);
+				_statehandler.ChangeState (TransitionState.PauseScreen);
+			}
+		}
+
+		public void PauseMenu()
+		{
+			if (SwinGame.KeyTyped (Hotkeys._down))
+			{
+				if ((int)_statehandler._cursor >= 4)
+				{
+					_statehandler._cursor = (MenuCursor)1;
+				}
+				else
+				{
+					_statehandler._cursor++;
+				}
+			}
+
+			else if (SwinGame.KeyTyped (Hotkeys._up))
+			{
+				if ((int)_statehandler._cursor <= 1)
+				{
+					_statehandler._cursor = (MenuCursor)4;
+				}
+				else
+				{
+					_statehandler._cursor--;
+				}
+			}
+
+			else if (SwinGame.KeyDown (Hotkeys._jump))
+			{
+				switch (_statehandler._cursor)
+				{
+				case MenuCursor.PlayGame:
+					_statehandler.ChangeState (GameState.Game);
+					break;
+				case MenuCursor.HighScores:
+					_statehandler.ChangeState (MenuState.ViewingScores);
+					break;
+				case MenuCursor.ChangeSkins:
+					_statehandler.ChangeState (MenuState.CustomisingSkins);
+					break;
+				case MenuCursor.ChangeKeys:
+					_statehandler.ChangeState (MenuState.CustomisingKeys);
+					break;
+				}
 			}
 		}
 
