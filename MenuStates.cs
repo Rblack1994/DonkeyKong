@@ -4,7 +4,7 @@ namespace MyGame
 {
 	public enum MenuState
 	{
-		VeiwingScores,
+		viewingScores,
 		CustomisingKeys,
 		CustomisingSkins,
 		MainMenu

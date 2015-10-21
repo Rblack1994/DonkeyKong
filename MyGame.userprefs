@@ -1,10 +1,13 @@
 ﻿<Properties StartupItem="MyGame.csproj">
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug-Windows|x86" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Character.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Input_Handler.cs">
     <Files>
-      <File FileName="Barrel.cs" Line="26" Column="26" />
-      <File FileName="GraphicsHandler.cs" Line="4" Column="4" />
-      <File FileName="Character.cs" Line="37" Column="37" />
+      <File FileName="src\GameMain.cs" Line="27" Column="27" />
+      <File FileName="ObjectsHandler.cs" Line="5" Column="5" />
+      <File FileName="Character.cs" Line="9" Column="9" />
+      <File FileName="GraphicsHandler.cs" Line="113" Column="113" />
+      <File FileName="GraphicsObject.cs" Line="2" Column="2" />
+      <File FileName="Input_Handler.cs" Line="5" Column="5" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
