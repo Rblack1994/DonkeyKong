@@ -5,9 +5,9 @@ namespace MyGame
 	public enum MenuCursor
 	{
 		PlayGame = 1,
-		ChangeKeys = 2,
-		ChangeSkins = 3,
-		HighScores = 4
+		ChangeKeys = 3,
+		ChangeSkins = 4,
+		HighScores = 2
 	}
 }
 

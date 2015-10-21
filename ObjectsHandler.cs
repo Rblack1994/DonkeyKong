@@ -136,7 +136,7 @@ namespace MyGame
 				GameObjects ();
 				break;
 			case GameState.Transition:
-				//DrawTransition ();
+				TransitionObjects ();
 				break;
 			}
 		}
@@ -156,6 +156,28 @@ namespace MyGame
 				break;
 			case MenuState.CustomisingSkins:
 				//drawskins
+				break;
+			}
+		}
+
+		public  void TransitionObjects()
+		{
+			switch (_statehandler.Transitionstate)
+			{
+			case TransitionState.Confirmation:
+				//
+				break;
+			case TransitionState.LevelStart:
+				//drawscores
+				break;
+			case TransitionState.LossScreen:
+				//drawkeys
+				break;
+			case TransitionState.PauseScreen:
+				//PauseMenu ();
+				break;
+			case TransitionState.WinScreen:
+				//
 				break;
 			}
 		}
@@ -332,6 +354,7 @@ namespace MyGame
 					_barrels.Remove (value);
 			}
 		}
+
 
 
 		public Character MenuCharacter 
