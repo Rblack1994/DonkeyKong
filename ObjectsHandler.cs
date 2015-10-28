@@ -250,11 +250,19 @@ namespace MyGame
 			//increases the character statecount for animation
 			//checks for barrel collisions
 			foreach (Barrel value in _barrels)
+			{
 				if (SwinGame.PointInCircle (_levelcharacter.Xpos + 11, _levelcharacter.Ypos + 14, value.Xpos + 5, value.Ypos + 5, 14))
 				{
 					_statehandler.ChangeState (CharacterState.Dying);
 					LevelCharacter.Statecount = 0;
 				}
+				if ((value.Xpos == _levelcharacter.Xpos)
+					&&((value.Ypos - _levelcharacter.Ypos)< 70)
+					&&((value.Ypos - _levelcharacter.Ypos)> 0))
+				{
+					_statehandler.Score += 50;
+				}
+			}
 
 			//handles a dieing character
 			if (_statehandler.Characterstate == CharacterState.Dying)
@@ -326,6 +334,10 @@ namespace MyGame
 				if (!(_levelcharacter is Mario))
 					_levelcharacter = new Mario (_statehandler, 250, 250);// as Character;
 				break;
+			case Skins.Luigi:
+				if (!(_levelcharacter is Luigi))
+					_levelcharacter = new Luigi (_statehandler, 250, 250);
+				break;
 			}
 		}
 
@@ -370,6 +382,18 @@ namespace MyGame
 			get
 			{
 				return _levelcharacter;
+			}
+		}
+
+		public Bitmap Platform
+		{
+			get
+			{
+				return _platform;
+			}
+			set
+			{
+				_platform = value;
 			}
 		}
 	}

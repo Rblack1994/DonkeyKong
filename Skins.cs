@@ -4,7 +4,8 @@ namespace MyGame
 {
 	public enum Skins
 	{
-		Mario
+		Mario,
+		Luigi
 	}
 }
 
