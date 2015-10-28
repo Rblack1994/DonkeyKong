@@ -92,6 +92,14 @@ namespace MyGame
 
 		public void HandleLevelInput()
 		{
+			if(SwinGame.KeyTyped(KeyCode.vk_2))
+			{
+				_objecthandler.Platform = SwinGame.LoadBitmap(SwinGame.PathToResource("platform.png", ResourceKind.BitmapResource),true,Color.Black);
+			}
+			if(SwinGame.KeyTyped(KeyCode.vk_3))
+			{
+				_objecthandler.Platform = SwinGame.LoadBitmap(SwinGame.PathToResource("platform1.png", ResourceKind.BitmapResource),true,Color.Black);
+			}
 			if (SwinGame.KeyDown (Hotkeys._left))
 			{
 				if (_objecthandler.LevelCharacter.Xpos > 50)
@@ -123,7 +131,7 @@ namespace MyGame
 				_objecthandler.LevelCharacter.Statecount = 130;
 			}
 
-			if (SwinGame.KeyTyped (KeyCode.vk_p))
+			if (SwinGame.KeyTyped (Hotkeys._pause))
 			{
 				_statehandler.ChangeState (GameState.Transition);
 				_statehandler.ChangeState (TransitionState.PauseScreen);
@@ -178,6 +186,7 @@ namespace MyGame
 
 		public void HandleMainMenu()
 		{
+
 			if (SwinGame.KeyTyped (Hotkeys._down))
 			{
 				if ((int)_statehandler._cursor >= 4)
@@ -208,38 +217,32 @@ namespace MyGame
 				{
 				case MenuCursor.PlayGame:
 					_statehandler.ChangeState (GameState.Game);
+					_statehandler.ChangeState (LevelState.Level1);
+					_objecthandler.LevelCharacter.Xpos = 110;
+					_objecthandler.LevelCharacter.Ypos = 552;
+					_statehandler.ChangeState (CharacterState.Standing);
 					break;
 				case MenuCursor.HighScores:
 					_statehandler.ChangeState (MenuState.ViewingScores);
 					break;
 				case MenuCursor.ChangeSkins:
-					_statehandler.ChangeState (MenuState.CustomisingSkins);
+					if(_statehandler.Skin == Skins.Mario)_statehandler.ChangeState (Skins.Luigi);
+					else _statehandler.ChangeState (Skins.Mario);
+					//_statehandler.ChangeState (MenuState.CustomisingSkins);
 					break;
 				case MenuCursor.ChangeKeys:
 					_statehandler.ChangeState (MenuState.CustomisingKeys);
 					break;
 				}
 			}
-			/*if(SwinGame.KeyDown(Hotkeys._left))
-				{
-				_objecthandler.MenuCharacter.Xpos--;
-				}
-			if(SwinGame.KeyDown(Hotkeys._right))
-			{
-				_objecthandler.MenuCharacter.Xpos++;
-			}
-			if(SwinGame.KeyTyped(KeyCode.vk_1))
-			{
-				_statehandler.ChangeState(GameState.Game);
-			}*/
-
 		}
 
 		public void CustomiseKeys()
 		{
+			SwinGame.DrawText (_statehandler._keyscursor.ToString(), Color.White, "arial", 26, 100, 100);
 			if (SwinGame.KeyTyped (Hotkeys._down))
 			{
-				if (_statehandler._keyscursor >= 6)
+				if (_statehandler._keyscursor >= 7)
 				{
 					_statehandler._keyscursor = 1;
 				}
@@ -253,7 +256,7 @@ namespace MyGame
 			{
 				if (_statehandler._keyscursor <= 1)
 				{
-					_statehandler._keyscursor = 6;
+					_statehandler._keyscursor = 7;
 				}
 				else
 				{
@@ -263,10 +266,28 @@ namespace MyGame
 
 			else if (SwinGame.KeyTyped (Hotkeys._jump))
 			{
-				//add states for each key in here, case 6 is return to menu
+				//add states for each key in here, case 7 is return to menu
 				switch (_statehandler._keyscursor)
 				{
+				case 1:
+					Hotkeys.ChangeKey (ref Hotkeys._up);
+					break;
+				case 2:
+					Hotkeys.ChangeKey (ref Hotkeys._down);
+					break;
+				case 3:
+					Hotkeys.ChangeKey (ref Hotkeys._left);
+					break;
+				case 4:
+					Hotkeys.ChangeKey (ref Hotkeys._right);
+					break;
+				case 5:
+					Hotkeys.ChangeKey (ref Hotkeys._jump);
+					break;
 				case 6:
+					Hotkeys.ChangeKey (ref Hotkeys._pause);
+					break;
+				case 7:
 					_statehandler.ChangeState (MenuState.MainMenu);
 					break;
 				default:
