@@ -239,9 +239,10 @@ namespace MyGame
 
 		public void CustomiseKeys()
 		{
+			SwinGame.DrawText (_statehandler._keyscursor.ToString(), Color.White, "arial", 26, 100, 100);
 			if (SwinGame.KeyTyped (Hotkeys._down))
 			{
-				if (_statehandler._keyscursor >= 6)
+				if (_statehandler._keyscursor >= 7)
 				{
 					_statehandler._keyscursor = 1;
 				}
@@ -255,7 +256,7 @@ namespace MyGame
 			{
 				if (_statehandler._keyscursor <= 1)
 				{
-					_statehandler._keyscursor = 6;
+					_statehandler._keyscursor = 7;
 				}
 				else
 				{
@@ -265,10 +266,28 @@ namespace MyGame
 
 			else if (SwinGame.KeyTyped (Hotkeys._jump))
 			{
-				//add states for each key in here, case 6 is return to menu
+				//add states for each key in here, case 7 is return to menu
 				switch (_statehandler._keyscursor)
 				{
+				case 1:
+					Hotkeys.ChangeKey (ref Hotkeys._up);
+					break;
+				case 2:
+					Hotkeys.ChangeKey (ref Hotkeys._down);
+					break;
+				case 3:
+					Hotkeys.ChangeKey (ref Hotkeys._left);
+					break;
+				case 4:
+					Hotkeys.ChangeKey (ref Hotkeys._right);
+					break;
+				case 5:
+					Hotkeys.ChangeKey (ref Hotkeys._jump);
+					break;
 				case 6:
+					Hotkeys.ChangeKey (ref Hotkeys._pause);
+					break;
+				case 7:
 					_statehandler.ChangeState (MenuState.MainMenu);
 					break;
 				default:
