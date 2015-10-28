@@ -10,7 +10,29 @@ namespace MyGame
 	{
 		private StateHandler _statehandler;
 		private ObjectsHandler _objecthandler;
+		private static System.Collections.Generic.List<Score> _Scores = new System.Collections.Generic.List<Score>();
 
+		private struct Score : IComparable
+		{
+			public string Name;
+
+			public int Value;
+			/// <summary>
+			/// Allows scores to be compared to facilitate sorting
+			/// </summary>
+			/// <param name="obj">the object to compare to</param>
+			/// <returns>a value that indicates the sort order</returns>
+			public int CompareTo(object obj)
+			{
+				if (obj is Score) {
+					Score other = (Score)obj;
+
+					return other.Value - this.Value;
+				} else {
+					return 0;
+				}
+			}
+		}
 
 		public GraphicsHandler (StateHandler _state,ObjectsHandler _object)
 		{
@@ -203,24 +225,58 @@ namespace MyGame
 
 		public void DrawScores()
 		{
-			SwinGameSDK.SwinGame.DrawText("High Scores", Color.DarkRed, "arial", 38, 200, 25);
 
-			//load scores
 			string filename = null;
-			filename = Path.GetFullPath ("highscores.txt");
-			//SwinGameSDK.SwinGame.DrawText(filename, Color.DarkRed, "arial", 12, 200, 225);
-			//StreamReader input = default(StreamReader);
-			StreamReader input = new StreamReader(filename);
+			filename = SwinGame.PathToResource("highscores.txt");
+			SwinGameSDK.SwinGame.DrawText(filename, Color.DarkRed, "arial", 12, 100, 100);
 
-			//string line = null;
+			StreamReader input = default(StreamReader);
+			input = new StreamReader(filename);
 
-			/*
-			for (int i = 1; i <= 10; i++) 
-			{
+			//Read in the # of scores
+			int numScores = 0;
+			numScores = Convert.ToInt32(input.ReadLine());
+			SwinGameSDK.SwinGame.DrawText(numScores.ToString(), Color.DarkRed, "arial", 12, 125, 150);
+			_Scores.Clear();
+
+			int i = 0;
+
+			for (i = 1; i <= numScores; i++) {
+				Score s = default(Score);
+				string line = null;
+
 				line = input.ReadLine();
-				SwinGameSDK.SwinGame.DrawText(line, Color.DarkRed, "arial", 20, 200, 225+(25*i));
-			}*/
-			//sr.Close();
+
+				s.Name = line.Substring(0, 3);
+				s.Value = Convert.ToInt32(line.Substring(3));
+				_Scores.Add(s);
+			}
+			input.Close();
+
+			SwinGameSDK.SwinGame.DrawText(_Scores.Count.ToString(), Color.DarkRed, "arial", 12, 150, 200);
+
+			const int SCORES_HEADING = 40;
+			const int SCORES_TOP = 80;
+			const int SCORE_GAP = 30;
+			const int SCORES_LEFT = 300;
+
+			SwinGame.DrawText("   High Scores   ", Color.White, "arial",20, SCORES_LEFT, SCORES_HEADING);
+
+			//For all of the scores
+			for (i = 0; i <= _Scores.Count - 1; i++) {
+				Score s = default(Score);
+
+				s = _Scores[i];
+
+				//for scores 1 - 9 use 01 - 09
+				if (i < 9) {
+					SwinGame.DrawText(" " + (i + 1) + ":   " + s.Name + "   " + s.Value, Color.White, "arial",20, SCORES_LEFT, SCORES_TOP + i * SCORE_GAP);
+				} else {
+					SwinGame.DrawText(i + 1 + ":   " + s.Name + "   " + s.Value, Color.White, "arial",20, SCORES_LEFT, SCORES_TOP + i * SCORE_GAP);
+				}
+			}
+
+
 		}
 
 		public  void DrawLevel1()
