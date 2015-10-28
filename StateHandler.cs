@@ -17,9 +17,11 @@ namespace MyGame
 		private CharacterState _nextcharacterstate;
 		private Skins _nextcharacterskin;
 		public MenuCursor _cursor;
+		private int _score;
 
 		 public StateHandler ()
 		{
+			_score = 0;
 			_gamestate = GameState.Menu;
 			_menustate = MenuState.MainMenu;
 			_levelstate = LevelState.Level1;
@@ -120,6 +122,18 @@ namespace MyGame
 			get
 			{
 				return _characterskin;
+			}
+		}
+
+		public int Score
+		{
+			get
+			{
+				return _score;
+			}
+			set
+			{
+				_score = value;
 			}
 		}
 	}

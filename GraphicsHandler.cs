@@ -10,6 +10,7 @@ namespace MyGame
 		private StateHandler _statehandler;
 		private ObjectsHandler _objecthandler;
 
+
 		public GraphicsHandler (StateHandler _state,ObjectsHandler _object)
 		{
 			_objecthandler = _object;
@@ -116,6 +117,7 @@ namespace MyGame
 				break;
 			case MenuCursor.ChangeSkins:
 				SwinGameSDK.SwinGame.DrawText ("Change Skins", Color.White, "arial", 38, 200, 550);
+				SwinGameSDK.SwinGame.DrawText (_statehandler.Skin.ToString(), Color.White, "arial", 18, 400, 550);
 				break;
 			}
 
@@ -124,10 +126,13 @@ namespace MyGame
 
 		public  void DrawLevel1()
 		{
+			SwinGameSDK.SwinGame.DrawText(_statehandler.Score.ToString(), Color.AntiqueWhite, "arial",22, 500, 25);
 			SwinGameSDK.SwinGame.DrawText("Donkey Kong Level 1", Color.DarkRed, "arial", 38, 200, 25);
 			SwinGameSDK.SwinGame.DrawText(_statehandler.Characterstate.ToString(), Color.DarkRed, "arial", 400, 200, 10);
 		}
 			
+
+
 	}
 }
 

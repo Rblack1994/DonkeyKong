@@ -78,6 +78,7 @@
     <Compile Include="Hotkeys.cs" />
     <Compile Include="Barrel.cs" />
     <Compile Include="MenuCursor.cs" />
+    <Compile Include="Luigi.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="SwinGame">
