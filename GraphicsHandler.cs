@@ -47,7 +47,7 @@ namespace MyGame
 				//drawscores
 				break;
 			case MenuState.CustomisingKeys:
-				//drawkeys
+				DrawKeysMenu ();
 				break;
 			case MenuState.CustomisingSkins:
 				//drawskins
@@ -119,6 +119,52 @@ namespace MyGame
 				SwinGameSDK.SwinGame.DrawText ("Change Skins", Color.White, "arial", 38, 200, 550);
 				SwinGameSDK.SwinGame.DrawText (_statehandler.Skin.ToString(), Color.White, "arial", 18, 400, 550);
 				break;
+			}
+
+
+		}
+
+		public  void DrawKeysMenu()
+		{
+			SwinGameSDK.SwinGame.DrawText("Hotkeys", Color.DarkRed, "arial", 38, 200, 25);
+			SwinGameSDK.SwinGame.DrawText("Up :", Color.DarkRed, "arial", 38, 200, 250);
+			SwinGameSDK.SwinGame.DrawText("Down :", Color.DarkRed, "arial", 38, 200, 300);
+			SwinGameSDK.SwinGame.DrawText("Left :", Color.DarkRed, "arial", 38, 200, 350);
+			SwinGameSDK.SwinGame.DrawText("Right :", Color.DarkRed, "arial", 38, 200, 400);
+			SwinGameSDK.SwinGame.DrawText("Jump :", Color.DarkRed, "arial", 38, 200, 450);
+			SwinGameSDK.SwinGame.DrawText("Back", Color.DarkRed, "arial", 38, 200, 500);
+
+			SwinGameSDK.SwinGame.DrawText(Hotkeys._up.ToString(), Color.DarkRed, "arial", 38, 300, 250);
+			SwinGameSDK.SwinGame.DrawText(Hotkeys._down.ToString(), Color.DarkRed, "arial", 38, 300, 300);
+			SwinGameSDK.SwinGame.DrawText(Hotkeys._left.ToString(), Color.DarkRed, "arial", 38, 300, 350);
+			SwinGameSDK.SwinGame.DrawText(Hotkeys._right.ToString(), Color.DarkRed, "arial", 38, 300, 400);
+			SwinGameSDK.SwinGame.DrawText(Hotkeys._jump.ToString(), Color.DarkRed, "arial", 38, 300, 450);
+			switch (_statehandler._keyscursor)
+			{
+			case 1:
+				SwinGameSDK.SwinGame.DrawText("Up :", Color.White, "arial", 38, 200, 250);
+				SwinGameSDK.SwinGame.DrawText(Hotkeys._up.ToString(), Color.White, "arial", 38, 300, 250);
+				break;
+			case 2:
+				SwinGameSDK.SwinGame.DrawText("Down :", Color.White, "arial", 38, 200, 300);
+				SwinGameSDK.SwinGame.DrawText(Hotkeys._down.ToString(), Color.White, "arial", 38, 300, 300);
+				break;
+			case 3:
+				SwinGameSDK.SwinGame.DrawText("Left :", Color.White, "arial", 38, 200, 350);
+				SwinGameSDK.SwinGame.DrawText(Hotkeys._left.ToString(), Color.White, "arial", 38, 300, 350);
+				break;
+			case 4:
+				SwinGameSDK.SwinGame.DrawText("Right :", Color.White, "arial", 38, 200, 400);
+				SwinGameSDK.SwinGame.DrawText(Hotkeys._right.ToString(), Color.White, "arial", 38, 300, 400);
+				break;
+			case 5:
+				SwinGameSDK.SwinGame.DrawText("Jump :", Color.White, "arial", 38, 200, 450);
+				SwinGameSDK.SwinGame.DrawText(Hotkeys._jump.ToString(), Color.White, "arial", 38, 300, 450);
+				break;
+			case 6:
+				SwinGameSDK.SwinGame.DrawText ("Back", Color.White, "arial", 38, 200, 500);
+				break;
+				
 			}
 
 
