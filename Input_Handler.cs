@@ -63,7 +63,7 @@ namespace MyGame
 				HandleMainMenu ();
 				break;
 			case MenuState.ViewingScores:
-				//HandleScores ();
+				HandleScores ();
 				break;
 			case MenuState.CustomisingKeys:
 				CustomiseKeys ();
@@ -228,12 +228,19 @@ namespace MyGame
 				case MenuCursor.ChangeSkins:
 					if(_statehandler.Skin == Skins.Mario)_statehandler.ChangeState (Skins.Luigi);
 					else _statehandler.ChangeState (Skins.Mario);
-					//_statehandler.ChangeState (MenuState.CustomisingSkins);
 					break;
 				case MenuCursor.ChangeKeys:
 					_statehandler.ChangeState (MenuState.CustomisingKeys);
 					break;
 				}
+			}
+		}
+
+		public void HandleScores()
+		{
+			if (SwinGame.KeyTyped (Hotkeys._jump))
+			{
+				_statehandler.ChangeState (MenuState.MainMenu);
 			}
 		}
 
@@ -303,7 +310,7 @@ namespace MyGame
 				}
 			}
 
-			else if (_statehandler._skinscursor == 1)
+			else if (SwinGame.KeyTyped (Hotkeys._jump))
 			{
 				switch (_statehandler._skinscursor)
 				{
@@ -315,11 +322,13 @@ namespace MyGame
 					}
 					else if (SwinGame.KeyTyped (Hotkeys._right))
 					{
-						_statehandler.ChangeState (Skins.Mario);
+						_statehandler.ChangeState (Skins.Luigi);
 					}
 					break;
 				case 2:
 					_statehandler.ChangeState (MenuState.MainMenu);
+					break;
+				default:
 					break;
 				}
 			}

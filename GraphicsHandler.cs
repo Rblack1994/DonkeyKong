@@ -1,6 +1,7 @@
 ﻿using System;
 using Color = System.Drawing.Color;
 using SwinGameSDK;
+using System.IO;
 namespace MyGame
 {
 
@@ -44,13 +45,13 @@ namespace MyGame
 				DrawMainMenu ();
 				break;
 			case MenuState.ViewingScores:
-				//drawscores
+				DrawScores ();
 				break;
 			case MenuState.CustomisingKeys:
 				DrawKeysMenu ();
 				break;
 			case MenuState.CustomisingSkins:
-				//drawskins
+				DrawSkinsMenu ();
 				break;
 			}
 		}
@@ -134,32 +135,32 @@ namespace MyGame
 			SwinGameSDK.SwinGame.DrawText("Jump :", Color.DarkRed, "arial", 38, 200, 450);
 			SwinGameSDK.SwinGame.DrawText("Back", Color.DarkRed, "arial", 38, 200, 500);
 
-			SwinGameSDK.SwinGame.DrawText(Hotkeys._up.ToString(), Color.DarkRed, "arial", 38, 300, 250);
-			SwinGameSDK.SwinGame.DrawText(Hotkeys._down.ToString(), Color.DarkRed, "arial", 38, 300, 300);
-			SwinGameSDK.SwinGame.DrawText(Hotkeys._left.ToString(), Color.DarkRed, "arial", 38, 300, 350);
-			SwinGameSDK.SwinGame.DrawText(Hotkeys._right.ToString(), Color.DarkRed, "arial", 38, 300, 400);
-			SwinGameSDK.SwinGame.DrawText(Hotkeys._jump.ToString(), Color.DarkRed, "arial", 38, 300, 450);
+			SwinGameSDK.SwinGame.DrawText(Hotkeys._up.ToString(), Color.DarkRed, "arial", 38, 400, 250);
+			SwinGameSDK.SwinGame.DrawText(Hotkeys._down.ToString(), Color.DarkRed, "arial", 38, 400, 300);
+			SwinGameSDK.SwinGame.DrawText(Hotkeys._left.ToString(), Color.DarkRed, "arial", 38, 400, 350);
+			SwinGameSDK.SwinGame.DrawText(Hotkeys._right.ToString(), Color.DarkRed, "arial", 38, 400, 400);
+			SwinGameSDK.SwinGame.DrawText(Hotkeys._jump.ToString(), Color.DarkRed, "arial", 38, 400, 450);
 			switch (_statehandler._keyscursor)
 			{
 			case 1:
 				SwinGameSDK.SwinGame.DrawText("Up :", Color.White, "arial", 38, 200, 250);
-				SwinGameSDK.SwinGame.DrawText(Hotkeys._up.ToString(), Color.White, "arial", 38, 300, 250);
+				SwinGameSDK.SwinGame.DrawText(Hotkeys._up.ToString(), Color.White, "arial", 38, 400, 250);
 				break;
 			case 2:
 				SwinGameSDK.SwinGame.DrawText("Down :", Color.White, "arial", 38, 200, 300);
-				SwinGameSDK.SwinGame.DrawText(Hotkeys._down.ToString(), Color.White, "arial", 38, 300, 300);
+				SwinGameSDK.SwinGame.DrawText(Hotkeys._down.ToString(), Color.White, "arial", 38, 400, 300);
 				break;
 			case 3:
 				SwinGameSDK.SwinGame.DrawText("Left :", Color.White, "arial", 38, 200, 350);
-				SwinGameSDK.SwinGame.DrawText(Hotkeys._left.ToString(), Color.White, "arial", 38, 300, 350);
+				SwinGameSDK.SwinGame.DrawText(Hotkeys._left.ToString(), Color.White, "arial", 38, 400, 350);
 				break;
 			case 4:
 				SwinGameSDK.SwinGame.DrawText("Right :", Color.White, "arial", 38, 200, 400);
-				SwinGameSDK.SwinGame.DrawText(Hotkeys._right.ToString(), Color.White, "arial", 38, 300, 400);
+				SwinGameSDK.SwinGame.DrawText(Hotkeys._right.ToString(), Color.White, "arial", 38, 400, 400);
 				break;
 			case 5:
 				SwinGameSDK.SwinGame.DrawText("Jump :", Color.White, "arial", 38, 200, 450);
-				SwinGameSDK.SwinGame.DrawText(Hotkeys._jump.ToString(), Color.White, "arial", 38, 300, 450);
+				SwinGameSDK.SwinGame.DrawText(Hotkeys._jump.ToString(), Color.White, "arial", 38, 400, 450);
 				break;
 			case 6:
 				SwinGameSDK.SwinGame.DrawText ("Back", Color.White, "arial", 38, 200, 500);
@@ -168,6 +169,51 @@ namespace MyGame
 			}
 
 
+		}
+
+		public void DrawSkinsMenu ()
+		{
+			string skinname = "Mario";
+			if(_statehandler.Skin == Skins.Luigi)
+				skinname = "Luigi";
+			
+			SwinGameSDK.SwinGame.DrawText("Skins Menu ", Color.DarkRed, "arial", 38, 200, 25);
+			SwinGameSDK.SwinGame.DrawText("Skin :", Color.DarkRed, "arial", 38, 200, 250);
+			SwinGameSDK.SwinGame.DrawText("Back", Color.DarkRed, "arial", 38, 200, 300);
+			SwinGameSDK.SwinGame.DrawText(skinname, Color.DarkRed, "arial", 38, 400, 250);
+				
+			switch (_statehandler._skinscursor)
+			{
+			case 1:
+				SwinGameSDK.SwinGame.DrawText ("Skin:", Color.White, "arial", 38, 200, 250);
+				SwinGameSDK.SwinGame.DrawText (skinname, Color.White, "arial", 38, 400, 250);
+				break;
+			case 2:
+				SwinGameSDK.SwinGame.DrawText ("Back", Color.White, "arial", 38, 200, 300);
+				break;
+			}
+		}
+
+		public void DrawScores()
+		{
+			SwinGameSDK.SwinGame.DrawText("High Scores", Color.DarkRed, "arial", 38, 200, 25);
+
+			//load scores
+			string filename = null;
+			filename = Path.GetFullPath ("highscores.txt");
+			//SwinGameSDK.SwinGame.DrawText(filename, Color.DarkRed, "arial", 12, 200, 225);
+			//StreamReader input = default(StreamReader);
+			StreamReader input = new StreamReader(filename);
+
+			//string line = null;
+
+			/*
+			for (int i = 1; i <= 10; i++) 
+			{
+				line = input.ReadLine();
+				SwinGameSDK.SwinGame.DrawText(line, Color.DarkRed, "arial", 20, 200, 225+(25*i));
+			}*/
+			//sr.Close();
 		}
 
 		public  void DrawLevel1()
