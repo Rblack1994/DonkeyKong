@@ -1,6 +1,7 @@
 ﻿using System;
 using Color = System.Drawing.Color;
 using SwinGameSDK;
+using System.IO;
 namespace MyGame
 {
 
@@ -44,13 +45,13 @@ namespace MyGame
 				DrawMainMenu ();
 				break;
 			case MenuState.ViewingScores:
-				//drawscores
+				DrawScores ();
 				break;
 			case MenuState.CustomisingKeys:
 				DrawKeysMenu ();
 				break;
 			case MenuState.CustomisingSkins:
-				//drawskins
+				DrawSkinsMenu ();
 				break;
 			}
 		}
@@ -127,6 +128,7 @@ namespace MyGame
 		public  void DrawKeysMenu()
 		{
 			SwinGameSDK.SwinGame.DrawText("Hotkeys", Color.DarkRed, "arial", 38, 200, 25);
+
 			SwinGameSDK.SwinGame.DrawText("Up :", Color.DarkRed, "arial", 24, 200, 250);
 			SwinGameSDK.SwinGame.DrawText("Down :", Color.DarkRed, "arial", 24, 200, 300);
 			SwinGameSDK.SwinGame.DrawText("Left :", Color.DarkRed, "arial", 24, 200, 350);
@@ -174,6 +176,51 @@ namespace MyGame
 			}
 
 
+		}
+
+		public void DrawSkinsMenu ()
+		{
+			string skinname = "Mario";
+			if(_statehandler.Skin == Skins.Luigi)
+				skinname = "Luigi";
+			
+			SwinGameSDK.SwinGame.DrawText("Skins Menu ", Color.DarkRed, "arial", 38, 200, 25);
+			SwinGameSDK.SwinGame.DrawText("Skin :", Color.DarkRed, "arial", 38, 200, 250);
+			SwinGameSDK.SwinGame.DrawText("Back", Color.DarkRed, "arial", 38, 200, 300);
+			SwinGameSDK.SwinGame.DrawText(skinname, Color.DarkRed, "arial", 38, 400, 250);
+				
+			switch (_statehandler._skinscursor)
+			{
+			case 1:
+				SwinGameSDK.SwinGame.DrawText ("Skin:", Color.White, "arial", 38, 200, 250);
+				SwinGameSDK.SwinGame.DrawText (skinname, Color.White, "arial", 38, 400, 250);
+				break;
+			case 2:
+				SwinGameSDK.SwinGame.DrawText ("Back", Color.White, "arial", 38, 200, 300);
+				break;
+			}
+		}
+
+		public void DrawScores()
+		{
+			SwinGameSDK.SwinGame.DrawText("High Scores", Color.DarkRed, "arial", 38, 200, 25);
+
+			//load scores
+			string filename = null;
+			filename = Path.GetFullPath ("highscores.txt");
+			//SwinGameSDK.SwinGame.DrawText(filename, Color.DarkRed, "arial", 12, 200, 225);
+			//StreamReader input = default(StreamReader);
+			StreamReader input = new StreamReader(filename);
+
+			//string line = null;
+
+			/*
+			for (int i = 1; i <= 10; i++) 
+			{
+				line = input.ReadLine();
+				SwinGameSDK.SwinGame.DrawText(line, Color.DarkRed, "arial", 20, 200, 225+(25*i));
+			}*/
+			//sr.Close();
 		}
 
 		public  void DrawLevel1()
