@@ -17,6 +17,8 @@ namespace MyGame
 		private CharacterState _nextcharacterstate;
 		private Skins _nextcharacterskin;
 		public MenuCursor _cursor;
+		public int _keyscursor;
+		public int _skinscursor;
 
 		 public StateHandler ()
 		{
@@ -33,6 +35,8 @@ namespace MyGame
 			_nextcharacterstate = CharacterState.Standing;
 			_nextcharacterskin = Skins.Mario;
 			_cursor = MenuCursor.PlayGame;
+			_keyscursor = 1;
+			_skinscursor = 1;
 		}
 
 		public void Run()

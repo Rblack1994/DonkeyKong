@@ -66,10 +66,10 @@ namespace MyGame
 				//HandleScores ();
 				break;
 			case MenuState.CustomisingKeys:
-				//CustomiseKeys ();
+				CustomiseKeys ();
 				break;
 			case MenuState.CustomisingSkins:
-				//CustomiseSkins ();
+				CustomiseSkins ();
 				break;
 			}
 		}
@@ -202,7 +202,7 @@ namespace MyGame
 				}
 			}
 
-			else if (SwinGame.KeyDown (Hotkeys._jump))
+			else if (SwinGame.KeyTyped (Hotkeys._jump))
 			{
 				switch (_statehandler._cursor)
 				{
@@ -233,6 +233,94 @@ namespace MyGame
 				_statehandler.ChangeState(GameState.Game);
 			}*/
 
+		}
+
+		public void CustomiseKeys()
+		{
+			if (SwinGame.KeyTyped (Hotkeys._down))
+			{
+				if (_statehandler._keyscursor >= 6)
+				{
+					_statehandler._keyscursor = 1;
+				}
+				else
+				{
+					_statehandler._keyscursor++;
+				}
+			}
+
+			else if (SwinGame.KeyTyped (Hotkeys._up))
+			{
+				if (_statehandler._keyscursor <= 1)
+				{
+					_statehandler._keyscursor = 6;
+				}
+				else
+				{
+					_statehandler._keyscursor--;
+				}
+			}
+
+			else if (SwinGame.KeyTyped (Hotkeys._jump))
+			{
+				//add states for each key in here, case 6 is return to menu
+				switch (_statehandler._keyscursor)
+				{
+				case 6:
+					_statehandler.ChangeState (MenuState.MainMenu);
+					break;
+				default:
+					break;
+				}
+			}
+		}
+
+		public void CustomiseSkins()
+		{
+			if (SwinGame.KeyTyped (Hotkeys._down))
+			{
+				if (_statehandler._skinscursor >= 2)
+				{
+					_statehandler._skinscursor = 1;
+				}
+				else
+				{
+					_statehandler._skinscursor++;
+				}
+			}
+
+			else if (SwinGame.KeyTyped (Hotkeys._up))
+			{
+				if (_statehandler._skinscursor <= 1)
+				{
+					_statehandler._skinscursor = 2;
+				}
+				else
+				{
+					_statehandler._skinscursor--;
+				}
+			}
+
+			else if (_statehandler._skinscursor == 1)
+			{
+				switch (_statehandler._skinscursor)
+				{
+				case 1:
+					//change here to select more than one skin by altering skins enum
+					if (SwinGame.KeyTyped (Hotkeys._left))
+					{
+						_statehandler.ChangeState (Skins.Mario);
+					}
+					else if (SwinGame.KeyTyped (Hotkeys._right))
+					{
+						_statehandler.ChangeState (Skins.Mario);
+					}
+					break;
+				case 2:
+					_statehandler.ChangeState (MenuState.MainMenu);
+					break;
+				}
+			}
 		}
 			
 	}
