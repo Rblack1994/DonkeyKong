@@ -15,7 +15,7 @@ namespace MyGame
 			ObjectsHandler h = new ObjectsHandler (s);
 
 			// adds a barrel at location 100,119
-			//h.AddBarrel (); // addbarrel function required.
+			h.AddBarrel ();
 			Character c = h.LevelCharacter;
 			c.Xpos = 100;
 			c.Ypos = 119;
@@ -41,7 +41,7 @@ namespace MyGame
 			c.Xpos = 150;
 			c.Ypos = 250;
 
-			//ih.ResetCharacter (); // not written yet - uncomment when added
+			ih.ResetCharacter ();
 
 			// check that is at defualt pos
 			Assert.IsTrue (c.Xpos == 110);

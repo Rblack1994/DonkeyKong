@@ -74,3 +74,7 @@ G:\uni\3rd yr 2nd sem\SWE20001 - Programming Practices\DonkeyKong\bin\Debug\nuni
 G:\uni\3rd yr 2nd sem\SWE20001 - Programming Practices\DonkeyKong\bin\Debug\SwinGame.dll
 G:\uni\3rd yr 2nd sem\SWE20001 - Programming Practices\DonkeyKong\bin\Debug\nunit.framework.xml
 G:\uni\3rd yr 2nd sem\SWE20001 - Programming Practices\DonkeyKong\obj\x86\Debug-Windows\MyGame.pdb
+C:\Users\546928\Desktop\School\2015_Sem2\SWE20001\DonkeyKong\bin\Debug\MyGame.pdb
+C:\Users\546928\Desktop\School\2015_Sem2\SWE20001\DonkeyKong\bin\Debug\nunit.framework.dll
+C:\Users\546928\Desktop\School\2015_Sem2\SWE20001\DonkeyKong\bin\Debug\nunit.framework.xml
+C:\Users\546928\Desktop\School\2015_Sem2\SWE20001\DonkeyKong\obj\x86\Debug-Windows\MyGame.pdb

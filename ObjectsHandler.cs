@@ -367,8 +367,11 @@ namespace MyGame
 			}
 		}
 
-
-
+		public void AddBarrel()
+		{
+			_barrels.Add (new Barrel ( _statehandler, 100, 269-FLOOR_OFFSET*5));
+		}
+			
 		public Character MenuCharacter 
 		{
 			get

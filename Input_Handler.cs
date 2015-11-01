@@ -218,9 +218,7 @@ namespace MyGame
 				case MenuCursor.PlayGame:
 					_statehandler.ChangeState (GameState.Game);
 					_statehandler.ChangeState (LevelState.Level1);
-					_objecthandler.LevelCharacter.Xpos = 110;
-					_objecthandler.LevelCharacter.Ypos = 552;
-					_statehandler.ChangeState (CharacterState.Standing);
+					ResetCharacter ();
 					break;
 				case MenuCursor.HighScores:
 					_statehandler.ChangeState (MenuState.ViewingScores);
@@ -301,6 +299,14 @@ namespace MyGame
 					break;
 				}
 			}
+		}
+
+		public void ResetCharacter()
+		{
+			_statehandler.ChangeState (GameState.Game);
+			_objecthandler.LevelCharacter.Xpos = 110;
+			_objecthandler.LevelCharacter.Ypos = 552;
+			_statehandler.ChangeState (CharacterState.Standing);
 		}
 
 		public void CustomiseSkins()

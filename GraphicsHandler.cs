@@ -68,6 +68,7 @@ namespace MyGame
 				DrawMainMenu ();
 				break;
 			case MenuState.ViewingScores:
+				ReadScores ();
 				DrawScores ();
 				break;
 			case MenuState.CustomisingKeys:
@@ -226,7 +227,55 @@ namespace MyGame
 
 		public void DrawScores()
 		{
+			SwinGameSDK.SwinGame.DrawText(_Scores.Count.ToString(), Color.DarkRed, "arial", 12, 150, 200);
 
+			const int SCORES_HEADING = 40;
+			const int SCORES_TOP = 80;
+			const int SCORE_GAP = 30;
+			const int SCORES_LEFT = 300;
+
+			SwinGame.DrawText("   High Scores   ", Color.White, "arial",20, SCORES_LEFT, SCORES_HEADING);
+
+			//For all of the scores
+			for (int i = 0; i <= _Scores.Count - 1; i++) 
+			{
+				Score s = default(Score);
+
+				s = _Scores[i];
+
+				//for scores 1 - 9 use 01 - 09
+				if (i < 9) {
+					SwinGame.DrawText(" " + (i + 1) + ":   " + s.Name + "   " + s.Value, Color.White, "arial",20, SCORES_LEFT, SCORES_TOP + i * SCORE_GAP);
+				} else {
+					SwinGame.DrawText(i + 1 + ":   " + s.Name + "   " + s.Value, Color.White, "arial",20, SCORES_LEFT, SCORES_TOP + i * SCORE_GAP);
+				}
+			}
+				
+		}
+
+		public  void DrawLevel1()
+		{
+			SwinGameSDK.SwinGame.DrawText(_statehandler.Score.ToString(), Color.AntiqueWhite, "arial",22, 500, 25);
+			SwinGameSDK.SwinGame.DrawText("Donkey Kong Level 1", Color.DarkRed, "arial", 38, 200, 25);
+			SwinGameSDK.SwinGame.DrawText(_statehandler.Characterstate.ToString(), Color.DarkRed, "arial", 400, 200, 10);
+		}
+			
+		public void RecordScore(string name,int score)
+		{
+			Score s = default(Score);
+			s.Name = name;
+			s.Value = score;
+			_Scores.Add(s);
+			_Scores.Sort();
+		}
+
+		public void ClearScores()
+		{
+			_Scores.Clear();
+		}
+
+		public void ReadScores()
+		{
 			string filename = null;
 			filename = SwinGame.PathToResource("highscores.txt");
 			SwinGameSDK.SwinGame.DrawText(filename, Color.DarkRed, "arial", 12, 100, 100);
@@ -253,41 +302,24 @@ namespace MyGame
 				_Scores.Add(s);
 			}
 			input.Close();
+		}
 
-			SwinGameSDK.SwinGame.DrawText(_Scores.Count.ToString(), Color.DarkRed, "arial", 12, 150, 200);
+		public void WriteScores()
+		{
+			string filename = null;
+			filename = SwinGame.PathToResource("highscores.txt");
 
-			const int SCORES_HEADING = 40;
-			const int SCORES_TOP = 80;
-			const int SCORE_GAP = 30;
-			const int SCORES_LEFT = 300;
+			StreamWriter output = default(StreamWriter);
+			output = new StreamWriter(filename);
 
-			SwinGame.DrawText("   High Scores   ", Color.White, "arial",20, SCORES_LEFT, SCORES_HEADING);
+			output.WriteLine(_Scores.Count);
 
-			//For all of the scores
-			for (i = 0; i <= _Scores.Count - 1; i++) {
-				Score s = default(Score);
-
-				s = _Scores[i];
-
-				//for scores 1 - 9 use 01 - 09
-				if (i < 9) {
-					SwinGame.DrawText(" " + (i + 1) + ":   " + s.Name + "   " + s.Value, Color.White, "arial",20, SCORES_LEFT, SCORES_TOP + i * SCORE_GAP);
-				} else {
-					SwinGame.DrawText(i + 1 + ":   " + s.Name + "   " + s.Value, Color.White, "arial",20, SCORES_LEFT, SCORES_TOP + i * SCORE_GAP);
-				}
+			foreach (Score s in _Scores) {
+				output.WriteLine(s.Name + s.Value);
 			}
 
-
+			output.Close();
 		}
-
-		public  void DrawLevel1()
-		{
-			SwinGameSDK.SwinGame.DrawText(_statehandler.Score.ToString(), Color.AntiqueWhite, "arial",22, 500, 25);
-			SwinGameSDK.SwinGame.DrawText("Donkey Kong Level 1", Color.DarkRed, "arial", 38, 200, 25);
-			SwinGameSDK.SwinGame.DrawText(_statehandler.Characterstate.ToString(), Color.DarkRed, "arial", 400, 200, 10);
-		}
-			
-
 
 	}
 }
