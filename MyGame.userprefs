@@ -1,9 +1,32 @@
 ﻿<Properties StartupItem="MyGame.csproj">
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug-Windows|x86" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="GraphicsHandler.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="StateHandlerTest.cs">
     <Files>
-      <File FileName="GraphicsHandler.cs" Line="35" Column="35" />
+      <File FileName="GraphicsHandler.cs" Line="1" Column="1" />
+      <File FileName="MenuStates.cs" Line="3" Column="3" />
+      <File FileName="Input_Handler.cs" Line="3" Column="3" />
+      <File FileName="ObjectHandlerTest.cs" Line="51" Column="51" />
+      <File FileName="GameState.cs" Line="1" Column="1" />
+      <File FileName="StateHandler.cs" Line="3" Column="3" />
+      <File FileName="src\GameMain.cs" Line="4" Column="4" />
+      <File FileName="SaveScoreTest.cs" Line="56" Column="56" />
+      <File FileName="ObjectsHandler.cs" Line="27" Column="27" />
+      <File FileName="MenuCursor.cs" Line="3" Column="3" />
+      <File FileName="StateHandlerTest.cs" Line="4" Column="4" />
     </Files>
+    <Pads>
+      <Pad Id="MonoDevelop.NUnit.TestPad">
+        <State expanded="True">
+          <Node name="MyGame" expanded="True">
+            <Node name="MyGame" expanded="True">
+              <Node name="ObjectHandlerTest" expanded="True">
+                <Node name="TestCaseplatformcollision" selected="True" />
+              </Node>
+            </Node>
+          </Node>
+        </State>
+      </Pad>
+    </Pads>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
     <BreakpointStore />

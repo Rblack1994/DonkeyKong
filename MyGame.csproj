@@ -12,7 +12,6 @@
     <AssemblyName>MyGame</AssemblyName>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug-Windows|x86' ">
-    <DebugType>none</DebugType>
     <Optimize>false</Optimize>
     <OutputPath>bin\Debug</OutputPath>
     <WarningLevel>4</WarningLevel>
@@ -22,6 +21,7 @@
         <Command type="AfterBuild" command="%SystemRoot%\Microsoft.NET\Framework\v4.0.30319\MsBuild.exe &quot;${ProjectDir}/${ProjectName}.csproj&quot; /target:CopyFiles /p:Configuration=Debug-Windows;Platform=x86;OutDir=&quot;${TargetDir}&quot;" workingdir="${ProjectDir}" externalConsole="True" />
       </CustomCommands>
     </CustomCommands>
+    <DebugSymbols>true</DebugSymbols>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug-Mac|x86' ">
     <DebugSymbols>true</DebugSymbols>
@@ -79,6 +79,9 @@
     <Compile Include="Barrel.cs" />
     <Compile Include="MenuCursor.cs" />
     <Compile Include="Luigi.cs" />
+    <Compile Include="ObjectHandlerTest.cs" />
+    <Compile Include="StateHandlerTest.cs" />
+    <Compile Include="SaveScoreTest.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="SwinGame">
@@ -86,6 +89,7 @@
     </Reference>
     <Reference Include="System.Drawing" />
     <Reference Include="System" />
+    <Reference Include="nunit.framework" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\animations\startup.txt">
