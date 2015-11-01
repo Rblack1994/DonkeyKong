@@ -57,6 +57,7 @@ namespace MyGame
 				DrawTransition ();
 				break;
 			}
+
 		}
 
 		public  void DrawMenu()
