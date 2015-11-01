@@ -352,7 +352,6 @@ namespace MyGame
 				}
 			}
 		}
-			
 	}
 }
 
