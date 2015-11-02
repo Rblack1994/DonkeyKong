@@ -1,10 +1,10 @@
 language: csharp
 solution: MyGame.sln
 install: 
-	- nuget restore MyGame.sln
-	- nuget install NUnit.Runners -Version 2.6.4 -OutputDirectory testrunner
+- nuget restore MyGame.sln
+- nuget install NUnit.Runners -Version 2.6.4 -OutputDirectory testrunner
 script: 
-	- xbuild ./MyGame.sln
-	- mono ./testrunner/NUnit.Runners.2.6.4/tools/nunit-console.exe ./MyPoject.Tests/bin/Release/MyProject.Tests.dll
+- xbuild ./MyGame.sln
+- mono ./testrunner/NUnit.Runners.2.6.4/tools/nunit-console.exe ./MyPoject.Tests/bin/Release/MyProject.Tests.dll
 notifications:
   slack: dp1-2015s2:b1lqOF67qvXUgK1Pyn5w4mfM
